@@ -71,6 +71,10 @@ sensio_framework_extra:
         annotations: false
 
 easy_admin:
+    formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y H:i:s'
     entities:
         Parameters:
             class: AppBundle\Entity\Parameters
@@ -90,6 +94,53 @@ easy_admin:
             form:
                 fields:
                     - { property: 'title', type: 'text', label: 'Titre'}    
-                    - { property: 'description', type: 'textarea', label: 'Parametre'}
-                    - { property: 'image', type: 'textarea', label: 'Parametre'}
-                    
+                    - { property: 'description', type: 'textarea', label: 'description'}
+                    - { property: 'picture', type: 'file', label: 'Image'}
+        
+        Gallery:
+            class: AppBundle\Entity\Gallery
+            list:
+                title: "Galerie"
+                fields: ['Titre', 'Description', 'Image', 'date']
+            form:
+                fields:
+                    - { property: 'name', type: 'text', label: 'Titre'}    
+                    - { property: 'description', type: 'textarea', label: 'Description'}
+                    - { property: 'file', type: 'text', label: 'Fichier'}            
+               
+        Comment:
+            class: AppBundle\Entity\Comment
+            list:
+                title: "Commentaires"
+                fields: ['Titre', 'Commentaire', 'Image', 'date']
+            form:
+                fields:
+                    - { property: 'name', type: 'text', label: 'Titre'}    
+                    - { property: 'text', type: 'textarea', label: 'Commentaire'}
+                    - { property: 'email', type: 'text', label: 'email'}
+        
+        Agenda:
+            class: AppBundle\Entity\Agenda
+            list:
+                title: "Mon Agenda"
+                fields: ['date', 'heure', 'Prenom', 'Nom', 'domicile', 'salon']
+            form:
+                fields:
+                    - { property: 'date', type: 'date', label: 'Date'}    
+                    - { property: 'heure', type: 'text', label: 'heure'}
+                    - { property: 'firstname', type: 'text', label: 'Prenom'}            
+                    - { property: 'lastname', type: 'text', label: 'Nom'}            
+                    - { property: 'address', type: 'text', label: 'Adresse'}            
+                    - { property: 'cp', type: 'text', label: 'Code postal'}            
+                    - { property: 'town', type: 'text', label: 'Ville'}            
+                    - { property: 'phone', type: 'text', label: 'Telephone'}            
+                    - { property: 'email', type: 'email', label: 'Email'}            
+                    - { property: 'comment', type: 'textarea', label: 'Commentaire'}
+                    - { property: 'picture', type: 'file', label: 'Photo'}
+                    - { property: 'salon', type: 'text', label: 'Salon'}
+                    - { property: 'domicile', type: 'text', label: 'Salon'}
+
+
+
+
+                                
