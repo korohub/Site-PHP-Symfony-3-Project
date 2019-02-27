@@ -69,3 +69,27 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
+
+easy_admin:
+    entities:
+        Parameters:
+            class: AppBundle\Entity\Parameters
+            list:
+                title: "Les paramètres de mon site"
+                fields: ['titre']
+            form:
+                fields:
+                    - { property: 'title', type: 'text', label: 'Titre'}    
+                    - { property: 'description', type: 'textarea', label: 'Parametre'}    
+        
+        News:
+            class: AppBundle\Entity\News
+            list:
+                title: "Mon blog"
+                fields: ['Titre', 'Description', 'Image', 'date']
+            form:
+                fields:
+                    - { property: 'title', type: 'text', label: 'Titre'}    
+                    - { property: 'description', type: 'textarea', label: 'Parametre'}
+                    - { property: 'image', type: 'textarea', label: 'Parametre'}
+                    
