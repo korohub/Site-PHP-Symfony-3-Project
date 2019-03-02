@@ -70,60 +70,101 @@ sensio_framework_extra:
    router:
         annotations: false
 
+# Easyadmin 
 easy_admin:
+    design:
+       menu:
+          - {entity: 'Agenda', icon: 'calendar', label: 'Agenda'}    
+          - label: 'Blog'
+            icon: 'newspaper-o'
+            children:
+                - {entity: 'News', icon: 'newspaper-o', label: 'Articles'}
+          - label: 'Galerie'
+            icon: 'picture-o'
+            children:
+                - {entity: 'Gallery', icon: 'picture-o', label: 'Galerie'}
+                - {entity: 'Comment', icon: 'comment-o', label: 'Commentaires'} 
+
+          - {entity: 'Employe', icon: 'user-circle-o', label: 'Salariés'}  
+          - {entity: 'Parameters', icon: 'gear', label: 'Paramètres'}      
+                   
     formats:
         date:     'd/m/Y'
         time:     'H:i'
         datetime: 'd/m/Y H:i:s'
+
+# Entities 
     entities:
         Parameters:
             class: AppBundle\Entity\Parameters
+            disabled_actions: ['new']
+            
             list:
                 title: "Les paramètres de mon site"
-                fields: ['titre']
+                fields: ['title']
+                actions: 
+                    - { name: 'edit', icon: 'pencil', label: '' }
+                    - { name: '-delete'}
+
             form:
                 fields:
                     - { property: 'title', type: 'text', label: 'Titre'}    
-                    - { property: 'description', type: 'textarea', label: 'Parametre'}    
-        
+                    - { property: 'description', type: 'textarea', label: 'Parametre'}   
+
+        # Entities 
         News:
             class: AppBundle\Entity\News
             list:
                 title: "Mon blog"
-                fields: ['Titre', 'Description', 'Image', 'date']
+                fields: ['Title', 'Description', 'picture', createdAt]
+                actions: 
+                    - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-secondary' }
+                    - { name: 'delete', icon: 'trash', label: '', css_class: 'btn btn-danger'}
             form:
                 fields:
                     - { property: 'title', type: 'text', label: 'Titre'}    
                     - { property: 'description', type: 'textarea', label: 'description'}
                     - { property: 'picture', type: 'file', label: 'Image'}
         
+        # Entities 
         Gallery:
             class: AppBundle\Entity\Gallery
             list:
                 title: "Galerie"
                 fields: ['Titre', 'Description', 'Image', 'date']
+                actions: 
+                    - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-secondary' }
+                    - { name: 'delete', icon: 'trash', label: '', css_class: 'btn btn-danger'}
             form:
                 fields:
                     - { property: 'name', type: 'text', label: 'Titre'}    
                     - { property: 'description', type: 'textarea', label: 'Description'}
-                    - { property: 'file', type: 'text', label: 'Fichier'}            
-               
+                    - { property: 'file', type: 'text', label: 'Fichier'}  
+
+        # Entities        
         Comment:
             class: AppBundle\Entity\Comment
             list:
                 title: "Commentaires"
                 fields: ['Titre', 'Commentaire', 'Image', 'date']
+                actions: 
+                    - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-secondary' }
+                    - { name: 'delete', icon: 'trash', label: '', css_class: 'btn btn-danger'}
             form:
                 fields:
                     - { property: 'name', type: 'text', label: 'Titre'}    
                     - { property: 'text', type: 'textarea', label: 'Commentaire'}
                     - { property: 'email', type: 'text', label: 'email'}
-        
+
+        # Entities 
         Agenda:
             class: AppBundle\Entity\Agenda
             list:
                 title: "Mon Agenda"
                 fields: ['date', 'heure', 'Prenom', 'Nom', 'domicile', 'salon']
+                actions: 
+                    - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-secondary' }
+                    - { name: 'delete', icon: 'trash', label: '', css_class: 'btn btn-danger'}
             form:
                 fields:
                     - { property: 'date', type: 'date', label: 'Date'}    
@@ -140,6 +181,22 @@ easy_admin:
                     - { property: 'salon', type: 'text', label: 'Salon'}
                     - { property: 'domicile', type: 'text', label: 'Salon'}
 
+        # Entities        
+        Employe:
+            class: AppBundle\Entity\Employe
+            list:
+                title: "Salariés"
+                fields: ['firstname', 'lastname', 'domicile', 'picture']
+                actions: 
+                    - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-secondary' }
+                    - { name: 'delete', icon: 'trash', label: '', css_class: 'btn btn-danger'}
+            form:
+                fields:
+                    - { property: 'firstname', type: 'text', label: 'Prénom'}    
+                    - { property: 'lastname', type: 'text', label: 'Nom'}
+                    - { property: 'description', type: 'textarea', label: 'email'}
+                    - { property: 'picture', type: 'text', label: 'Photo'}
+                    - { property: 'email', type: 'text', label: 'Email'}
 
 
 

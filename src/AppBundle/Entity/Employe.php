@@ -5,9 +5,9 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * employe
+ * Employe
  *
- * @ORM\Table(name="Employe")
+ * @ORM\Table(name="employe")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeRepository")
  */
 class Employe
@@ -25,7 +25,6 @@ class Employe
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=255)
-     * @ORM\ManyToOne(targetEntity="Agenda", inversedBy="employeId")
      */
     private $firstname;
 
@@ -46,7 +45,7 @@ class Employe
     /**
      * @var string
      *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
+     * @ORM\Column(name="picture", type="string", length=255)
      */
     private $picture;
 
