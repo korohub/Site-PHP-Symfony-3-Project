@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Gallery
@@ -50,12 +51,17 @@ class Gallery
      */
     private $createdAt;
 
-       /**
-     * @ORM\ManyToOne(targetEntity="Comment", inversedBy="galleryId")
-     * @ORM\JoinColumn(name="galleryid", referencedColumnName="id")
+    
+    /**
+     * @var int
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="id")
      */
-    private $galleryId;
+    private $commentId;
 
+    public function __construct(){
+        $this->commentId = new ArrayCollection();
+        $this->createdAt = new \DateTime("now");
+    }
 
 
 
@@ -164,5 +170,38 @@ class Gallery
     {
         return $this->createdAt;
     }
-}
 
+    /**
+     * Add commentId
+     *
+     * @param \AppBundle\Entity\Comment $commentId
+     *
+     * @return Gallery
+     */
+    public function addCommentId(\AppBundle\Entity\Comment $commentId)
+    {
+        $this->commentId[] = $commentId;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentId
+     *
+     * @param \AppBundle\Entity\Comment $commentId
+     */
+    public function removeCommentId(\AppBundle\Entity\Comment $commentId)
+    {
+        $this->commentId->removeElement($commentId);
+    }
+
+    /**
+     * Get commentId
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommentId()
+    {
+        return $this->commentId;
+    }
+}
