@@ -50,9 +50,9 @@ class Comment
     private $createdAt;
 
     /**
-     * @var int
      *
-     * @ORM\OneToMany(targetEntity="Gallery", mappedBy="galleryId")
+     * @ORM\ManyToOne(targetEntity="Gallery", inversedBy="commentId")
+     * @ORM\JoinColumn(name="galleryId", referencedColumnName="id", nullable=true)
      */
     private $galleryId;
 
@@ -187,4 +187,3 @@ class Comment
         return $this->galleryId;
     }
 }
-
