@@ -102,7 +102,7 @@ class Agenda
     /**
      * @var string
      *
-     * @ORM\Column(name="salon", type="string", length=255)
+     * @ORM\Column(name="salon", type="boolean", length=255)
      */
     private $salon;
 
@@ -117,7 +117,7 @@ class Agenda
      * @var int
      *
      * @ORM\Column(name="employeId", type="integer")
-     * @ORM\OneToOne(targetEntity="Employe", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="Employe", mappedBy="lastname")
      *   
      */
     private $employeId;
@@ -126,7 +126,7 @@ class Agenda
      * @var int
      *
      * @ORM\Column(name="salonId", type="integer")
-     * @ORM\OneToOne(targetEntity="salon", mappedBy="id")
+     * @ORM\OneToMany(targetEntity="Salon", mappedBy="name")
      *
      */
     private $salonId;
