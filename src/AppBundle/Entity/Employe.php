@@ -218,4 +218,3 @@ class Employe
         return $this->email;
     }
 }
-
