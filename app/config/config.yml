@@ -85,7 +85,8 @@ easy_admin:
                 - {entity: 'Gallery', icon: 'picture-o', label: 'Galerie'}
                 - {entity: 'Comment', icon: 'comment-o', label: 'Commentaires'} 
 
-          - {entity: 'Employe', icon: 'user-circle-o', label: 'Salariés'}  
+          - {entity: 'Employe', icon: 'user-circle-o', label: 'Salariés'} 
+          - {entity: 'Salon', icon: 'home', label: 'Salon'}  
           - {entity: 'Parameters', icon: 'gear', label: 'Paramètres'}      
                    
     formats:
@@ -101,7 +102,9 @@ easy_admin:
             
             list:
                 title: "Les paramètres de mon site"
-                fields: ['title']
+                fields: 
+                    - {property: 'title', label: 'nom'}
+                    - {property: 'description', label: 'Paramètres'}
                 actions: 
                     - { name: 'edit', icon: 'pencil', label: '' }
                     - { name: '-delete'}
@@ -116,7 +119,11 @@ easy_admin:
             class: AppBundle\Entity\News
             list:
                 title: "Mon blog"
-                fields: ['Title', 'Description', 'picture', createdAt]
+                fields: 
+                    - {property: 'title', label: 'Titre'}
+                    - {property: 'description', label: 'Contenu'}
+                    - {property: 'picture', label: 'Image'}
+                    - {property: 'createdAt', label: 'Date de Publication'}
                 actions: 
                     - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-secondary' }
                     - { name: 'delete', icon: 'trash', label: '', css_class: 'btn btn-danger'}
@@ -131,7 +138,11 @@ easy_admin:
             class: AppBundle\Entity\Gallery
             list:
                 title: "Galerie"
-                fields: ['Titre', 'Description', 'Image', 'date']
+                fields: 
+                    - {property: 'name', label: 'Nom'}
+                    - {property: 'description', label: 'Description'}
+                    - {property: 'file', label: 'Image'}
+                    - {property: 'createdAt', label: 'Date de Publication'}
                 actions: 
                     - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-secondary' }
                     - { name: 'delete', icon: 'trash', label: '', css_class: 'btn btn-danger'}
@@ -146,7 +157,13 @@ easy_admin:
             class: AppBundle\Entity\Comment
             list:
                 title: "Commentaires"
-                fields: ['Titre', 'Commentaire', 'Image', 'date']
+                fields: 
+                    - {property: 'name', label: 'Nom'}
+                    - {property: 'text', label: 'Commentaire'}
+                    - {property: 'email', label: 'email'}
+                    - {property: 'createdAt', label: 'Date de Publication'}
+                    - {property: 'galleryId', label: 'Image'}
+
                 actions: 
                     - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-secondary' }
                     - { name: 'delete', icon: 'trash', label: '', css_class: 'btn btn-danger'}
@@ -161,7 +178,12 @@ easy_admin:
             class: AppBundle\Entity\Agenda
             list:
                 title: "Mon Agenda"
-                fields: ['date', 'heure', 'Prenom', 'Nom', 'domicile', 'salon']
+                fields: 
+                    - {property: 'date', label: 'Date'}
+                    - {property: 'heure', label: 'Heure'}
+                    - {property: 'firstname', label: 'Prénom'}
+                    - {property: 'lastname', label: 'Nom'}
+                    - {property: 'domicile', type: 'toggle', label: 'Domicile'}
                 actions: 
                     - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-secondary' }
                     - { name: 'delete', icon: 'trash', label: '', css_class: 'btn btn-danger'}
@@ -179,7 +201,10 @@ easy_admin:
                     - { property: 'comment', type: 'textarea', label: 'Commentaire'}
                     - { property: 'picture', type: 'file', label: 'Photo'}
                     - { property: 'salon', type: 'text', label: 'Salon'}
-                    - { property: 'domicile', type: 'text', label: 'Salon'}
+                    - { property: 'domicile', type: 'text', label: 'domicle'}
+                    - { property: 'employeId', type: 'text', label: 'Coiffeur'}
+                    - { property: 'salonId', type: 'text', label: 'Salon'}
+
 
         # Entities        
         Employe:
@@ -198,6 +223,21 @@ easy_admin:
                     - { property: 'picture', type: 'text', label: 'Photo'}
                     - { property: 'email', type: 'text', label: 'Email'}
 
-
+        # Entities        
+        Salon:
+            class: AppBundle\Entity\Salon
+            list:
+                title: "Liste de mes Salon"
+                fields: ['name', 'address', 'cp', 'town']
+                actions: 
+                    - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-secondary' }
+                    - { name: 'delete', icon: 'trash', label: '', css_class: 'btn btn-danger'}
+            form:
+                fields:
+                    - { property: 'name', type: 'text', label: 'Nom'}    
+                    - { property: 'address', type: 'text', label: 'Adresse'}
+                    - { property: 'cp', type: 'text', label: 'Code postal'}
+                    - { property: 'town', type: 'text', label: 'Ville'}
+                    - { property: 'phone', type: 'text', label: 'Télephone'}
 
                                 
