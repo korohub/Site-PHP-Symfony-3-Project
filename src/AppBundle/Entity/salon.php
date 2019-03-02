@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * salon
+ * Salon
  *
  * @ORM\Table(name="salon")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\salonRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SalonRepository")
  */
-class salon
+class Salon
 {
     /**
      * @var int
@@ -31,28 +31,28 @@ class salon
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string", length=255)
+     * @ORM\Column(name="address", type="string", length=255, nullable=true)
      */
     private $address;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cp", type="string", length=5)
+     * @ORM\Column(name="cp", type="string", length=5, nullable=true)
      */
     private $cp;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="town", type="string", length=255)
+     * @ORM\Column(name="town", type="string", length=255, nullable=true)
      */
     private $town;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=255)
+     * @ORM\Column(name="phone", type="string", length=10, nullable=true)
      */
     private $phone;
 
@@ -72,7 +72,7 @@ class salon
      *
      * @param string $name
      *
-     * @return salon
+     * @return Salon
      */
     public function setName($name)
     {
@@ -96,7 +96,7 @@ class salon
      *
      * @param string $address
      *
-     * @return salon
+     * @return Salon
      */
     public function setAddress($address)
     {
@@ -120,7 +120,7 @@ class salon
      *
      * @param string $cp
      *
-     * @return salon
+     * @return Salon
      */
     public function setCp($cp)
     {
@@ -144,7 +144,7 @@ class salon
      *
      * @param string $town
      *
-     * @return salon
+     * @return Salon
      */
     public function setTown($town)
     {
@@ -168,7 +168,7 @@ class salon
      *
      * @param string $phone
      *
-     * @return salon
+     * @return Salon
      */
     public function setPhone($phone)
     {
@@ -187,4 +187,3 @@ class salon
         return $this->phone;
     }
 }
-
