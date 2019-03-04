@@ -2,12 +2,41 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Barber Cut!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="https://fonts.googleapis.com/css?family=Proza+Libre:400,400i" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+          <div class="topnav" id="myTopnav">
+            <a href="#">Présentation</a>
+            <a href="#">Actualité</a>
+            <a href="#">Galerie</a>
+            <a href="#">Tarifs/Forfaits</a>
+            <a href="#">Equipe</a>
+            <a href="#">Contact</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+
     </head>
     <body>
         {% block body %}{% endblock %}
+
         {% block javascripts %}{% endblock %}
+        <script>
+        function myFunction() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+        </script>
+
     </body>
 </html>
