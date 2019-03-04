@@ -17,3 +17,5 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+    app.path.gallery_images: /uploads/gallery/
+    app.path.news_images: /uploads/news/
