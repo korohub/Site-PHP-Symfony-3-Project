@@ -29,4 +29,15 @@ class DefaultController extends Controller
             
         ]);
     }
+
+    /**
+     * @Route("/adm", name="adm")
+     */
+    public function takePicture(Request $request)
+    {
+        
+        return $this->render('adm/photo.html.twig', [
+            
+        ]);
+    }
 }

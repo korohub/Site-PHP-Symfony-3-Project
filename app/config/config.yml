@@ -109,6 +109,7 @@ easy_admin:
           - {entity: 'Employe', icon: 'user-circle-o', label: 'Salariés'} 
           - {entity: 'Salon', icon: 'home', label: 'Salon'}  
           - {entity: 'Parameters', icon: 'gear', label: 'Paramètres'}
+          #- { label: 'Salaries', route: 'salarie' }
     
     list:
         actions:
