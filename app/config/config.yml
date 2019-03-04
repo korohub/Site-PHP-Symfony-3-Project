@@ -94,7 +94,8 @@ vich_uploader:
 easy_admin:
     design:
        menu:
-          - {entity: 'Agenda', icon: 'calendar', label: 'Agenda'}    
+          - {entity: 'Agenda', icon: 'calendar', label: 'Agenda'} 
+          - {entity: 'Tarifs', icon: 'euro', label: 'Tarifs'}   
           - label: 'Blog'
             icon: 'newspaper-o'
             children:
@@ -112,7 +113,9 @@ easy_admin:
     list:
         actions:
             - {name: 'new', label: 'Nouveau'}
-            - {name: 'search', label: 'Rechercher'}            
+            - {name: 'search', label: 'Rechercher'}
+            - {name: 'edit', label: 'Sauvegarder'}
+                      
                    
     formats:
         date:     'd/m/Y'
@@ -237,7 +240,11 @@ easy_admin:
             class: AppBundle\Entity\Employe
             list:
                 title: "Salariés"
-                fields: ['firstname', 'lastname', 'domicile', 'picture']
+                fields: 
+                    - {property: 'firstname', label: 'Prénom'}
+                    - {property: 'lastname', label: 'Nom'}
+                    - {property: 'domicile', type: 'toggle'}
+                    
                 actions: 
                     - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-secondary' }
                     - { name: 'delete', icon: 'trash', label: '', css_class: 'btn btn-danger'}
@@ -254,7 +261,11 @@ easy_admin:
             class: AppBundle\Entity\Salon
             list:
                 title: "Liste de mes Salon"
-                fields: ['name', 'address', 'cp', 'town']
+                fields: 
+                    - {property: 'name', label: 'Nom'}
+                    - {property: 'address', label: 'Adresse'}
+                    - {property: 'cp', label: 'Code postal'}
+                    - {property: 'phone', label: 'Téléphone'}
                 actions: 
                     - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-secondary' }
                     - { name: 'delete', icon: 'trash', label: '', css_class: 'btn btn-danger'}
@@ -265,5 +276,25 @@ easy_admin:
                     - { property: 'cp', type: 'text', label: 'Code postal'}
                     - { property: 'town', type: 'text', label: 'Ville'}
                     - { property: 'phone', type: 'text', label: 'Télephone'}
+
+        # Entities        
+        Tarifs:
+            class: AppBundle\Entity\Tarifs
+            list:
+                title: "Mes prix"
+                fields: 
+                    - {property: 'name', label: 'Categorie'}
+                    - {property: 'description', label: 'Description'}
+                    - {property: 'price', label: 'Prix'}
+                    
+                actions: 
+                    - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-secondary' }
+                    - { name: 'delete', icon: 'trash', label: '', css_class: 'btn btn-danger'}
+            form:
+                fields:
+                    - { property: 'name', type: 'text', label: 'Nom'}    
+                    - { property: 'description', type: 'text', label: 'Description'}
+                    - { property: 'price', type: 'text', label: 'Prix'}
+                             
 
                                 
