@@ -139,7 +139,7 @@ easy_admin:
 
             form:
                 fields:
-                    - { property: 'description', type: 'textarea', label: 'Parametre'}   
+                    - { property: 'description', type: 'fos_ckeditor', label: 'Parametre'}   
 
         # Entities 
         News:
@@ -158,7 +158,7 @@ easy_admin:
             form:
                 fields:
                     - { property: 'title', type: 'text', label: 'Titre'}    
-                    - { property: 'description', type: 'textarea', label: 'description'}
+                    - { property: 'description', type: 'fos_ckeditor', label: 'description'}
                     - { property: 'imageFile', type: 'vich_image', base_path: '%app.path.news_images%' }
         
         # Entities 
@@ -167,7 +167,6 @@ easy_admin:
             list:
                 title: "Galerie"
                 fields: 
-                    - {property: 'name', label: 'Nom'}
                     - {property: 'description', label: 'Description'}
                     - {property: 'image', label: 'Image' }
                     - {property: 'createdAt', label: 'Date de Publication'}
@@ -176,8 +175,7 @@ easy_admin:
                     - { name: 'delete', icon: 'trash', label: '', css_class: 'btn btn-danger'}
             form:
                 fields:
-                    - { property: 'name', type: 'text', label: 'Titre'}    
-                    - { property: 'description', type: 'textarea', label: 'Description'}
+                    - { property: 'description', type: 'fos_ckeditor', label: 'Description'}
                     - { property: 'imageFile', type: 'vich_image' } 
                     
 
@@ -252,7 +250,7 @@ easy_admin:
                 fields:
                     - { property: 'firstname', type: 'text', label: 'Prénom'}    
                     - { property: 'lastname', type: 'text', label: 'Nom'}
-                    - { property: 'description', type: 'textarea', label: 'email'}
+                    - { property: 'description', type: 'fos_ckeditor', label: 'email'}
                     - { property: 'picture', type: 'text', label: 'Photo'}
                     - { property: 'email', type: 'text', label: 'Email'}
 
