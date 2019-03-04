@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: [ "en" ] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -70,6 +70,16 @@ sensio_framework_extra:
    router:
         annotations: false
 
+vich_uploader:
+    db_driver: orm
+    mappings:
+        gallery_images:
+            uri_prefix:         '%app.path.gallery_images%'
+            upload_destination: '%kernel.root_dir%/../web%app.path.gallery_images%'
+        news_images:
+            uri_prefix:         '%app.path.news_images%'
+            upload_destination: '%kernel.root_dir%/../web%app.path.news_images%'             
+
 # Easyadmin 
 easy_admin:
     design:
@@ -87,7 +97,12 @@ easy_admin:
 
           - {entity: 'Employe', icon: 'user-circle-o', label: 'Salariés'} 
           - {entity: 'Salon', icon: 'home', label: 'Salon'}  
-          - {entity: 'Parameters', icon: 'gear', label: 'Paramètres'}      
+          - {entity: 'Parameters', icon: 'gear', label: 'Paramètres'}
+    
+    list:
+        actions:
+            - {name: 'new', label: 'Nouveau'}
+            - {name: 'search', label: 'Rechercher'}            
                    
     formats:
         date:     'd/m/Y'
@@ -111,18 +126,18 @@ easy_admin:
 
             form:
                 fields:
-                    - { property: 'title', type: 'text', label: 'Titre'}    
                     - { property: 'description', type: 'textarea', label: 'Parametre'}   
 
         # Entities 
         News:
             class: AppBundle\Entity\News
             list:
+                max_results: 15
                 title: "Mon blog"
                 fields: 
                     - {property: 'title', label: 'Titre'}
                     - {property: 'description', label: 'Contenu'}
-                    - {property: 'picture', label: 'Image'}
+                    - {property: 'image', label: 'Image'}
                     - {property: 'createdAt', label: 'Date de Publication'}
                 actions: 
                     - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-secondary' }
@@ -131,7 +146,7 @@ easy_admin:
                 fields:
                     - { property: 'title', type: 'text', label: 'Titre'}    
                     - { property: 'description', type: 'textarea', label: 'description'}
-                    - { property: 'picture', type: 'file', label: 'Image'}
+                    - { property: 'imageFile', type: 'vich_image', base_path: '%app.path.news_images%' }
         
         # Entities 
         Gallery:
@@ -141,7 +156,7 @@ easy_admin:
                 fields: 
                     - {property: 'name', label: 'Nom'}
                     - {property: 'description', label: 'Description'}
-                    - {property: 'file', label: 'Image'}
+                    - {property: 'image', label: 'Image' }
                     - {property: 'createdAt', label: 'Date de Publication'}
                 actions: 
                     - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-secondary' }
@@ -150,7 +165,8 @@ easy_admin:
                 fields:
                     - { property: 'name', type: 'text', label: 'Titre'}    
                     - { property: 'description', type: 'textarea', label: 'Description'}
-                    - { property: 'file', type: 'text', label: 'Fichier'}  
+                    - { property: 'imageFile', type: 'vich_image' } 
+                    
 
         # Entities        
         Comment:
@@ -189,7 +205,7 @@ easy_admin:
                     - { name: 'delete', icon: 'trash', label: '', css_class: 'btn btn-danger'}
             form:
                 fields:
-                    - { property: 'date', type: 'date', label: 'Date'}    
+                    - { property: 'date', label: 'Date', type_options: {widget: 'single_text'}}    
                     - { property: 'heure', type: 'text', label: 'heure'}
                     - { property: 'firstname', type: 'text', label: 'Prenom'}            
                     - { property: 'lastname', type: 'text', label: 'Nom'}            
