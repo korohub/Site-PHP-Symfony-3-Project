@@ -116,8 +116,8 @@ class Agenda
     /**
      * @var int
      *
-     * @ORM\Column(name="employeId", type="integer")
-     * @ORM\OneToMany(targetEntity="Employe", mappedBy="lastname")
+     * 
+     * @ORM\OneToMany(targetEntity="Employe", mappedBy="id")
      *   
      */
     private $employeId;
@@ -125,11 +125,16 @@ class Agenda
     /**
      * @var int
      *
-     * @ORM\Column(name="salonId", type="integer")
-     * @ORM\OneToMany(targetEntity="Salon", mappedBy="name")
+     * @ORM\OneToMany(targetEntity="Salon", mappedBy="id")
      *
      */
     private $salonId;
+
+    public function __construct(){
+        $this->salonId = new ArrayCollection();
+        $this->employeId = new ArrayCollection();
+       
+    }
 
 
     /**

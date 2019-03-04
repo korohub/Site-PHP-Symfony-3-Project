@@ -63,6 +63,13 @@ class Employe
      */
     private $email;
 
+    /**
+     *@var int
+     * @ORM\ManyToOne(targetEntity="Agenda", inversedBy="employeId")
+     * @ORM\JoinColumn(name="eRdvId", referencedColumnName="id", nullable=true)
+     */
+    private $eRdvId;
+
 
     /**
      * Get id
@@ -216,5 +223,53 @@ class Employe
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Set rdvId
+     *
+     * @param \AppBundle\Entity\Agenda $rdvId
+     *
+     * @return Employe
+     */
+    public function setRdvId(\AppBundle\Entity\Agenda $rdvId = null)
+    {
+        $this->rdvId = $rdvId;
+
+        return $this;
+    }
+
+    /**
+     * Get rdvId
+     *
+     * @return \AppBundle\Entity\Agenda
+     */
+    public function getRdvId()
+    {
+        return $this->rdvId;
+    }
+
+    /**
+     * Set eRdvId
+     *
+     * @param \AppBundle\Entity\Agenda $eRdvId
+     *
+     * @return Employe
+     */
+    public function setERdvId(\AppBundle\Entity\Agenda $eRdvId = null)
+    {
+        $this->eRdvId = $eRdvId;
+
+        return $this;
+    }
+
+    /**
+     * Get eRdvId
+     *
+     * @return \AppBundle\Entity\Agenda
+     */
+    public function getERdvId()
+    {
+        return $this->eRdvId;
     }
 }
