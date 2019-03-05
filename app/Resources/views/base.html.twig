@@ -3,20 +3,19 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Barber Cut!{% endblock %}</title>
-        {% block stylesheets %}
+        {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link href="https://fonts.googleapis.com/css?family=Proza+Libre:400,400i" rel="stylesheet">
-        <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
               integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        {% endblock %}
+
 
     </head>
     <body>
-      {% block body %}
+      {% block body %}{% endblock %}
        <!-- Navigation -->
       <header>
         <div class="topnav" id="myTopnav">
@@ -26,7 +25,7 @@
           <a href="#">Tarifs/Forfaits</a>
           <a href="#">Equipe</a>
           <a href="#">Contact</a>
-          <a href="#">Login</a>
+          <a href="http://localhost/projet3/web/app_dev.php/login">Login</a>
           <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
           </a>
@@ -46,12 +45,13 @@
 
                     <p class="artist-cover">Sara Blake<br><span>Fine Artist</span></p>
                 </div>
-                <img src="web/images/header.jpg" class="img-fluid" alt="Responsive image">
+                <div class="img-fluid" alt="Responsive image">
+                <href="{{ asset('images/header.jpg') }}">
       </section>
-      {% endblock %}
 
 
-        {% block javascripts %}
+
+        {% block javascripts %}{% endblock %}
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -66,7 +66,7 @@
           }
         }
         </script>
-        {% endblock %}
+
 
     </body>
 </html>
