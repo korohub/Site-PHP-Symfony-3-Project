@@ -19,3 +19,4 @@ parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
     app.path.gallery_images: /uploads/gallery/
     app.path.news_images: /uploads/news/
+    app.path.employe_images: /uploads/employe/

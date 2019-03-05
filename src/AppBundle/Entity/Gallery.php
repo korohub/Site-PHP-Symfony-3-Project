@@ -26,26 +26,12 @@ class Gallery
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255, nullable=true)
-     */
-    private $name;
-
-    /**
+     /**
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="file", type="string", length=255, nullable=true)
-     */
-    private $file;
 
     /**
      * @var \DateTime
@@ -256,5 +242,29 @@ class Gallery
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Gallery
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }
