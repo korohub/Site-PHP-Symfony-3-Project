@@ -88,14 +88,17 @@ vich_uploader:
             upload_destination: '%kernel.root_dir%/../web%app.path.gallery_images%'
         news_images:
             uri_prefix:         '%app.path.news_images%'
-            upload_destination: '%kernel.root_dir%/../web%app.path.news_images%'             
+            upload_destination: '%kernel.root_dir%/../web%app.path.news_images%'
+        employe_images:
+            uri_prefix:         '%app.path.employe_images%'
+            upload_destination: '%kernel.root_dir%/../web%app.path.employe_images%'                 
 
 # Easyadmin 
 easy_admin:
     design:
        menu:
-          - {entity: 'Agenda', icon: 'calendar', label: 'Agenda'} 
-          - {entity: 'Tarifs', icon: 'euro', label: 'Tarifs'}   
+          #- {entity: 'Agenda', icon: 'calendar', label: 'Agenda'} 
+          
           - label: 'Blog'
             icon: 'newspaper-o'
             children:
@@ -105,6 +108,7 @@ easy_admin:
             children:
                 - {entity: 'Gallery', icon: 'picture-o', label: 'Galerie'}
                 - {entity: 'Comment', icon: 'comment-o', label: 'Commentaires'} 
+          - {entity: 'Tarifs', icon: 'euro', label: 'Tarifs'}         
 
           - {entity: 'Employe', icon: 'user-circle-o', label: 'Salariés'} 
           - {entity: 'Salon', icon: 'home', label: 'Salon'}  
@@ -242,6 +246,7 @@ easy_admin:
                 fields: 
                     - {property: 'firstname', label: 'Prénom'}
                     - {property: 'lastname', label: 'Nom'}
+                    - {property: 'image', label: 'Image' }
                     - {property: 'domicile', type: 'toggle'}
                     
                 actions: 
@@ -251,8 +256,9 @@ easy_admin:
                 fields:
                     - { property: 'firstname', type: 'text', label: 'Prénom'}    
                     - { property: 'lastname', type: 'text', label: 'Nom'}
-                    - { property: 'description', type: 'fos_ckeditor', label: 'email'}
-                    - { property: 'picture', type: 'text', label: 'Photo'}
+                    - { property: 'description', type: 'fos_ckeditor', label: 'Description'}
+                    - { property: 'domicile', label: 'Domicile'}
+                    - { property: 'imageFile', type: 'vich_image', label: 'Photo' } 
                     - { property: 'email', type: 'text', label: 'Email'}
 
         # Entities        
