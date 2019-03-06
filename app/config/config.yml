@@ -31,7 +31,7 @@ framework:
     php_errors:
         log: true
     templating:
-        engines: ['twig']     
+        engines: ['twig', 'php']     
 
 # Twig Configuration
 twig:
